@@ -19,7 +19,7 @@ const mainMenu = () => {
         type: "list",
         name: "task",
         message: "select your action",
-        choices: ["view all departments", "view all roles", "view all employees","add role"]
+        choices: ["view all departments", "view all roles", "view all employees", "add role", "add department", "add employee"] // Added "add department" and "add employee" choices.
     }).then(answer => {
         switch (answer.task) {
             case "view all departments":
@@ -31,15 +31,21 @@ const mainMenu = () => {
             case "view all employees":
                 viewEmployees()
                 break;
-                case "add role":
+            case "add role":
                 addRole()
+                break;
+            case "add department": // Call addDepartment function when selected.
+                addDepartment()
+                break;
+            case "add employee": // Call addEmployee function when selected.
+                addEmployee()
                 break;
             default:
                 break;
-
         }
     })
 };
+
 function viewDepartments() {
     db.promise().query("SELECT * FROM department").then(([response]) => {
         console.table(response)
@@ -58,6 +64,23 @@ function viewDepartments() {
     });
 }
 function addDepartment() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'department_name',
+            message: 'Enter department name:',
+        }
+    ]).then(({ department_name }) => {
+        db.promise().query("INSERT INTO department (department_name) VALUES (?)", [department_name])
+            .then(([rows]) => {
+                if (rows.affectedRows === 1) {
+                    viewDepartments();
+                } else {
+                    console.info("Failed to add new department.");
+                    mainMenu();
+                }
+            });
+    });
 
 }
 async function addRole() {
@@ -99,6 +122,45 @@ async function addRole() {
     });
 }
 function addEmployee() {
-
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'first_name',
+            message: 'Enter employee first name:',
+        },
+        {
+            type: 'input',
+            name: 'last_name',
+            message: 'Enter employee last name:',
+        },
+        {
+            type: 'list',
+            name: 'role_id',
+            message: 'Select employee role:',
+            choices: roleChoices, // You need to create and populate roleChoices.
+        },
+        {
+            type: 'list',
+            name: 'manager_id',
+            message: 'Select employee manager:',
+            choices: managerChoices, // You need to create and populate managerChoices.
+        }
+    ]).then(({ first_name, last_name, role_id, manager_id }) => {
+        const employeeObject = {
+            first_name,
+            last_name,
+            role_id,
+            manager_id,
+        };
+        db.promise().query("INSERT INTO employee SET ?", employeeObject)
+            .then(([rows]) => {
+                if (rows.affectedRows === 1) {
+                    viewEmployees();
+                } else {
+                    console.info("Failed to add new employee.");
+                    mainMenu();
+                }
+            });
+    });
 }
 mainMenu();
