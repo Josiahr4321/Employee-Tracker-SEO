@@ -13,16 +13,16 @@ INSERT INTO department (id, department_name) VALUES
 
   -- Inserting seed data
 INSERT INTO role (id, title, department_id) VALUES
-  (1, 'Manager', 1),
-  (2, 'Sales Representative', 1),
-  (3, 'Marketing Specialist', 2),
-  (4, 'Financial Analyst', 3),
-  (5, 'HR Coordinator', 4),
-  (6, 'IT Technician', 5),
-  (7, 'Operations Manager', 6),
-  (8, 'Research Scientist', 7),
-  (9, 'Customer Support Representative', 8),
-  (10, 'Administrative Assistant', 9);
+  (1, 'Manager', 100000, 1),
+  (2, 'Sales Representative', 80000, 1),
+  (3, 'Marketing Specialist', 100000, 2),
+  (4, 'Financial Analyst', 80000, 3),
+  (5, 'HR Coordinator', 75000, 4),
+  (6, 'IT Technician', 75000, 5),
+  (7, 'Operations Manager', 60000, 6),
+  (8, 'Research Scientist', 120000, 7),
+  (9, 'Customer Support Representative', 40000, 8),
+  (10, 'Administrative Assistant', 50000, 9);
 
   INSERT INTO employee (id, first_name, last_name, role_id, manager_id) VALUES
   (1, 'John', 'Doe', 1, NULL),

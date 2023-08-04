@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS business_db;
 CREATE DATABASE business_db;
 
 USE business_db;
@@ -11,6 +12,7 @@ CREATE TABLE department (
 CREATE TABLE role(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     title VARCHAR(30) NOT NULL,
+    salary DECIMAL(10,2) NOT NULL,
     department_id INT, 
     FOREIGN KEY(department_id) REFERENCES department(id),
 );
