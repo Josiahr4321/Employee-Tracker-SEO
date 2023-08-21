@@ -1,26 +1,26 @@
 const mysql = require('mysql2');
 const inquirer = require('inquirer');
-const { default: prompt } = require('inquirer/lib/ui/prompt');
+
 const db = mysql.createConnection(
     {
         host: 'localhost',
         user: 'root',
         password: 'root',
         database: 'business_db'
-    },
-    console.log(`Connected to the business_db database.`)
+    }
+    
 );
 
 // db.promise().query("SELECT * FROM department").then(([response]) => console.log(response));
 
-const mainMenu = () => {
-    const prompt = inquirer.createPromptModule()
-    prompt({
+function mainMenu ()  {
+    
+    inquirer.prompt([{
         type: "list",
         name: "task",
         message: "select your action",
-        choices: ["view all departments", "view all roles", "view all employees", "add role", "add department", "add employee"] // Added "add department" and "add employee" choices.
-    }).then(answer => {
+        choices: ["view all departments", "view all roles", "view all employees", "add role", "add department", "add employee"] 
+    }]).then(answer => {
         switch (answer.task) {
             case "view all departments":
                 viewDepartments()
@@ -34,16 +34,15 @@ const mainMenu = () => {
             case "add role":
                 addRole()
                 break;
-            case "add department": // Call addDepartment function when selected.
+            case "add department": 
                 addDepartment()
                 break;
-            case "add employee": // Call addEmployee function when selected.
-                addEmployee()
+            case "add employee": 
                 break;
             default:
                 break;
         }
-    })
+    }).catch(console.log)
 };
 
 function viewDepartments() {
@@ -137,13 +136,13 @@ function addEmployee() {
             type: 'list',
             name: 'role_id',
             message: 'Select employee role:',
-            choices: roleChoices, // You need to create and populate roleChoices.
+            choices: roleChoices, 
         },
         {
             type: 'list',
             name: 'manager_id',
             message: 'Select employee manager:',
-            choices: managerChoices, // You need to create and populate managerChoices.
+            choices: managerChoices, 
         }
     ]).then(({ first_name, last_name, role_id, manager_id }) => {
         const employeeObject = {
