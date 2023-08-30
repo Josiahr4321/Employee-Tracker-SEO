@@ -13,9 +13,11 @@ Package Installation: Open the integrated terminal and access the main 'Employee
 Application Launch: While still within the terminal, run 'npm start' to initiate the application.
 
 Usage:
+
 After completing the installation process and executing 'npm start' within the integrated terminal for the 'Employee-Tracker' file, you can effectively manage and view data across various tables within the 'business_db'. Upon launching the application, you will be presented with seven key options:
 
 Display Data:
+
 Automatically view the saved data within each respective table.
 Add Data: Insert new rows into the selected data table.
 Update Data: Modify existing data entries.
@@ -27,11 +29,17 @@ Application Flow:
 Upon launch, follow the on-screen options to navigate through the application.
 Choose from the menu options to view, add, or update data as needed.
 Any successful updates will be confirmed through console notifications.
-GitHub Repository Link:
-For further details and access to the project's source code, visit the GitHub repository:
-Employee-Tracker Repository
 
-Simplify your business information management with the Employee Tracker project. View, add, and update data seamlessly to enhance your business operations.
+GitHub Repository Link:
+
+https://github.com/Josiahr4321/Employee-Tracker-SEO
+
+Video:
+
+
+
+
+https://github.com/Josiahr4321/Employee-Tracker-SEO/assets/125624166/4bc21675-f99d-46ca-ae9b-e28a626f15f0
 
 
 
