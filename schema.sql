@@ -9,13 +9,16 @@ CREATE TABLE department (
     
 );
 
-CREATE TABLE role(
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-    title VARCHAR(30) NOT NULL,
-    salary DECIMAL(10,2) NOT NULL,
-    department_id INT, 
-    FOREIGN KEY(department_id) REFERENCES department(id),
+CREATE TABLE role (
+  id INT PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  salary DECIMAL(10, 2) NOT NULL, -- Add a salary column with the appropriate data type
+  department_id INT,
+ FOREIGN KEY(department_id) REFERENCES department(id)
 );
+
+    
+  
 
 CREATE TABLE employee(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,

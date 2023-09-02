@@ -12,7 +12,7 @@ INSERT INTO department (id, department_name) VALUES
   (10, 'Quality Assurance');
 
   -- Inserting seed data
-INSERT INTO role (id, title, department_id) VALUES
+INSERT INTO role (id, title, salary, department_id) VALUES
   (1, 'Manager', 100000, 1),
   (2, 'Sales Representative', 80000, 1),
   (3, 'Marketing Specialist', 100000, 2),
